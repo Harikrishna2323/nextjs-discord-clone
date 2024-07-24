@@ -8,12 +8,17 @@ const nextConfig = {
 
   //   return config;
   // },
+  async rewrites() {
+    return [
+      {
+        source: "/api/socket/io",
+        destination:
+          "https://nextjs-discord-clone-production-52c3.up.railway.app//api/socket/io",
+      },
+    ];
+  },
   images: {
-    domains: [
-      "firebasestorage.googleapis.com",
-      "https://nextjs-discord-clone-production-52c3.up.railway.app",
-      "nextjs-discord-clone-production-52c3.up.railway.app",
-    ],
+    domains: ["firebasestorage.googleapis.com"],
   },
 };
 
