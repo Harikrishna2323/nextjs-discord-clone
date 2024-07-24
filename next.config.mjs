@@ -18,9 +18,17 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: [
-      "firebasestorage.googleapis.com",
-      "nextjs-discord-clone-production-52c3.up.railway.app",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "nextjs-discord-clone-production-52c3.up.railway.app",
+        pathname: "/**",
+      },
     ],
   },
 };
