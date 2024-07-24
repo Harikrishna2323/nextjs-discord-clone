@@ -9,7 +9,11 @@ const nextConfig = {
   //   return config;
   // },
   images: {
-    domains: ["firebasestorage.googleapis.com"],
+    domains: [
+      "firebasestorage.googleapis.com",
+      "https://nextjs-discord-clone-production-52c3.up.railway.app",
+      "nextjs-discord-clone-production-52c3.up.railway.app",
+    ],
   },
 };
 
