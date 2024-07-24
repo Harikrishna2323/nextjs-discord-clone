@@ -9,7 +9,6 @@ interface MobileToggle {
 }
 
 export const MobileToggle = ({ serverId }: MobileToggle) => {
-  // ! BUG : Menu visible in medium devices also
   return (
     <Sheet>
       <SheetTrigger asChild>

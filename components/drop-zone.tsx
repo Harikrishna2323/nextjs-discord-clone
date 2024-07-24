@@ -73,9 +73,9 @@ export const UploadDropzone = ({
 }: UploadDropzoneProps) => {
   const [uploadURL, setUploadURL] = useState(value || "");
   const [progress, setProgress] = useState(value ? 100 : 0);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [isUploaded, setIsUploaded] = useState(value ? false : true);
-  const [fileType, setFileType] = useState("");
+
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({ accept: { "image/*": [], "application/pdf": [] } });
 
@@ -170,7 +170,13 @@ export const UploadDropzone = ({
     <div className="flex flex-col gap-y-4">
       <Dropzone onDrop={(acceptedFiles) => onDrop(acceptedFiles)}>
         {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps({ style })}>
+          <div
+            {...getRootProps()}
+            className="flex-1 flex flex-col items-center 
+          p-5 text-[#bdbdbd] bg-[#fafafa] border-2 
+          border-r-2 border-[#eeeeee] border-dashed 
+          transition outline-none"
+          >
             <input {...getInputProps()} />
             {!isUploaded && progress === 100 ? (
               <p>
@@ -195,6 +201,7 @@ export const UploadDropzone = ({
           <div className="flex items-center justify-center flex-col">
             {progress === 100 &&
               files[0] &&
+              files[0]?.type &&
               files[0]?.type !== "application/pdf" && <Thumbs />}
 
             {progress === 100 &&

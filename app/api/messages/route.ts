@@ -18,8 +18,6 @@ export async function GET(req: Request) {
     const cursor = searchParams.get("cursor");
     const channelId = searchParams.get("channelId");
 
-    console.log({ cursor });
-
     if (!profile) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -31,7 +29,6 @@ export async function GET(req: Request) {
     let messages: MessageType[];
 
     if (cursor) {
-      console.log("cursor present");
       const cursorMessage = await Message.findById(cursor);
       const cursorDate = cursorMessage ? cursorMessage.createdAt : new Date();
       messages = await Message.find({
@@ -48,7 +45,6 @@ export async function GET(req: Request) {
           },
         });
     } else {
-      console.log("no cursor present adddasd");
       messages = await Message.find({
         channel: channelId,
       })
@@ -75,7 +71,7 @@ export async function GET(req: Request) {
       nextCursor,
     });
   } catch (error) {
-    console.log("[MESSAGES-GET : ]", error);
+    console.log("[MESSAGES-GET] : ", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

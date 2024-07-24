@@ -30,7 +30,6 @@ export async function GET(req: Request) {
     let messages: MessageType[] = [];
 
     if (cursor) {
-      console.log("cursor present");
       const cursorMessage = await Message.findById(cursor);
       const cursorDate = cursorMessage ? cursorMessage.createdAt : new Date();
 
@@ -48,7 +47,6 @@ export async function GET(req: Request) {
           },
         });
     } else {
-      console.log("no cursor present");
       messages = await DirectMessage.find({
         conversation: conversationId,
       })
@@ -75,7 +73,7 @@ export async function GET(req: Request) {
       nextCursor,
     });
   } catch (error) {
-    console.log("[DIRECT-MESSAGES-GET : ]", error);
+    console.log("[DIRECT-MESSAGES-GET] : ", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

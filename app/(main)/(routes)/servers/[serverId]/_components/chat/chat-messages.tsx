@@ -86,10 +86,6 @@ export const ChatMessages = ({
     );
   }
 
-  console.log({ hasNextPage });
-
-  console.log({ data });
-
   return (
     <div ref={chatRef} className="flex-1 flex flex-col py-4">
       {!hasNextPage && <div className="flex-1" />}

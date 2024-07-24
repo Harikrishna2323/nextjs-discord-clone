@@ -41,7 +41,6 @@ export async function PATCH(
     });
 
     if (member && member.profile._id.toString() !== profile._id.toString()) {
-      console.log("Update rule reached");
       member = await Member.findByIdAndUpdate(
         params.memberId,
         { $set: { role } },
@@ -111,10 +110,6 @@ export async function DELETE(
     // ? Delete cond: ensure whether member's profileId is not current profileId
     // * TO avoid case where ADMIN does not kick themselves (when testing API)
 
-    console.log(
-      "Match condition : ",
-      member.profile._id.toString() !== profile._id.toString()
-    );
     if (member.profile._id.toString() !== profile._id.toString()) {
       // * delete the member
       await Member.findByIdAndDelete(params.memberId);

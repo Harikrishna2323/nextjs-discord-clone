@@ -40,8 +40,6 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
       ? memberTwo
       : memberOne;
 
-  console.log("conversation server : ", conversation);
-
   return (
     <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
       <ChatHeader

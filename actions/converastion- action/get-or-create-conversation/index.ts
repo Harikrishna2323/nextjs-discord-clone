@@ -83,7 +83,6 @@ const createNewConversation = async (
         },
       });
 
-    console.log("Conversation created and populated:", populatedConversation);
     return populatedConversation;
   } catch (error) {
     return null;

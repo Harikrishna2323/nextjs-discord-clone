@@ -19,9 +19,6 @@ import { Button } from "../ui/button";
 
 import { useModal } from "@/hooks/use-modal-store";
 
-const invite =
-  "http://localhost:3000/invite/8110d0ef-9bc4-4886-9a41-0847097549c3";
-
 export const LeaveServerModal = () => {
   const router = useRouter();
   const { isOpen, onClose, type, data, onOpen } = useModal();

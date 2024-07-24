@@ -48,7 +48,6 @@ export async function POST(req: Request) {
       member &&
       (member.role === MEMBERROLE.ADMIN || member.role === MEMBERROLE.MODERATOR)
     ) {
-      console.log("-----------------PERMISSIONS MET--------------");
       channel = await Channel.create({
         name,
         type,

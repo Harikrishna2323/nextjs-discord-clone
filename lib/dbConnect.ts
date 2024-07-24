@@ -24,7 +24,6 @@ async function dbConnect() {
   }
   if (cached.conn == null) {
     cached.promise = mongoose.connect(DATABASE_URL!).then((mongoose) => {
-      console.log("Db connected!");
       return mongoose;
     });
   }

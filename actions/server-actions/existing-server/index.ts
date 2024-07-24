@@ -38,7 +38,6 @@ export const alreadyExistingServer = async (inviteCode: string) => {
     );
 
     if (existingServer && hasProfileId) {
-      console.log("redirect router");
       return JSON.stringify(existingServer.toObject());
     }
 

@@ -42,14 +42,10 @@ export default async function handler(
     if (!conversation)
       return res.status(404).json({ message: "Conversation not found" });
 
-    console.log({ conversation });
-
     const member =
       conversation.memberOne.profile._id.toString() === profile._id.toString()
         ? conversation.memberOne.toObject()
         : conversation.memberTwo.toObject();
-
-    console.log({ member });
 
     const createdMessage = await DirectMessage.create({
       content,
@@ -57,8 +53,6 @@ export default async function handler(
       conversation: conversationId,
       member: member?._id,
     });
-
-    console.log({ createdMessage });
 
     const message = await DirectMessage.findById(createdMessage._id).populate({
       path: "member",
