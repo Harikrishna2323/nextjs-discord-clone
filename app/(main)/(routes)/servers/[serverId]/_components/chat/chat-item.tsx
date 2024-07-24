@@ -33,9 +33,11 @@ interface ChatItemProps {
 }
 
 const roleIconMap = {
-  GUEST: null,
-  MODERATOR: <ShieldCheck className="w-4 h-4 ml-2 text-indigo-500" />,
-  ADMIN: <ShieldAlert className="w-4 h-4 ml-2 text-rose-500" />,
+  [MEMBERROLE.GUEST]: null,
+  [MEMBERROLE.MODERATOR]: (
+    <ShieldCheck className="h-4 w-4 ml-2 text-indigo-500" />
+  ),
+  [MEMBERROLE.ADMIN]: <ShieldAlert className="h-4 w-4 ml-2 text-rose-500" />,
 };
 
 const formSchema = z.object({
@@ -140,7 +142,7 @@ export const ChatItem = ({
                 {member?.profile?.name}
               </p>
               <ActionToolTip label={member.role}>
-                <p>{roleIconMap[role]}</p>
+                <p>{roleIconMap[role!]}</p>
               </ActionToolTip>
             </div>
             <span className="text-xs text-zinc-500 dark:text-zinc-400">
